@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(initializeAnecdotes())
-  }, [])
+  }, [dispatch]) // Added dispatch to dependency array
 
   return (
     <div>
