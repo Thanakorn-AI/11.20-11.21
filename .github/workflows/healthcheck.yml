@@ -3,8 +3,8 @@ name: Health check
 
 on:
   schedule:
-    # Run once a day at midnight
-    - cron: '0 0 * * *'
+    # Run once a week on Sunday at midnight
+    - cron: '0 0 * * 0'
   # Allow manual trigger
   workflow_dispatch:
 
