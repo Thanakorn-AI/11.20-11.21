@@ -1,0 +1,22 @@
+# 11.20-11.21/.github/workflows/healthcheck.yml
+name: Health check
+
+on:
+  schedule:
+    # Run once a week on Sunday at midnight
+    - cron: '0 0 * * 0'
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the deployed service
+        uses: jtalk/url-health-check-action@v3
+        with:
+          # Replace this URL with your deployed application URL when available
+          url: ${{ secrets.DEPLOYMENT_URL }} 
+          follow-redirect: true
+          max-attempts: 3
+          retry-delay: 5s
