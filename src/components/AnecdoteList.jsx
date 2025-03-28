@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { voteAnecdote } from '../reducers/anecdoteReducer'
 import { setNotification } from '../reducers/notificationReducer'
 import { getFilteredAnecdotes } from '../selectors/anecdoteSelectors'
+import PropTypes from 'prop-types'
 
 const Anecdote = ({ anecdote, vote }) => {
   return (
@@ -14,6 +15,15 @@ const Anecdote = ({ anecdote, vote }) => {
       </div>
     </div>
   )
+}
+
+Anecdote.propTypes = {
+  anecdote: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    votes: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired
+  }).isRequired,
+  vote: PropTypes.func.isRequired
 }
 
 const AnecdoteList = () => {
